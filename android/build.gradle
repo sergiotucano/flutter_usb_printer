@@ -30,7 +30,6 @@ android {
     compileSdkVersion 31
     namespace = "app.mylekha.client.flutter_usb_printer"
 
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
