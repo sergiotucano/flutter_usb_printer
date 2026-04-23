@@ -30,37 +30,37 @@ class FlutterUsbPrinterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_usb_printer")
     channel.setMethodCallHandler(this)
     context = flutterPluginBinding.getApplicationContext()
-    adapter = USBPrinterAdapter().getInstance()
+    adapter = USBPrinterAdapter.getInstance()
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
-        "getUSBDeviceList" -> {
-          getUSBDeviceList(result)
-        }
-        "connect" -> {
-          val vendorId = call.argument<Int>("vendorId")
-          val productId = call.argument<Int>("productId")
-          connect(vendorId!!, productId!!, result)
-        }
-        "close" -> {
-          close(result)
-        }
-        "printText" -> {
-          val text = call.argument<String>("text")
-          printText(text, result)
-        }
-        "printRawText" -> {
-          val raw = call.argument<String>("raw")
-          printRawText(raw, result)
-        }
-        "write" -> {
-          val data = call.argument<ByteArray>("data")
-          write(data, result)
-        }
-        else -> {
-          result.notImplemented()
-        }
+      "getUSBDeviceList" -> {
+        getUSBDeviceList(result)
+      }
+      "connect" -> {
+        val vendorId = call.argument<Int>("vendorId")
+        val productId = call.argument<Int>("productId")
+        connect(vendorId!!, productId!!, result)
+      }
+      "close" -> {
+        close(result)
+      }
+      "printText" -> {
+        val text = call.argument<String>("text")
+        printText(text, result)
+      }
+      "printRawText" -> {
+        val raw = call.argument<String>("raw")
+        printRawText(raw, result)
+      }
+      "write" -> {
+        val data = call.argument<ByteArray>("data")
+        write(data, result)
+      }
+      else -> {
+        result.notImplemented()
+      }
     }
   }
 
